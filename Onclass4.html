@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #count {
+        text-align: center;
+        font-size: xx-large;
+    }
+</style>
+<body id="body">
+    <div id="time"></div>
+    <button id="btn">Clear</button>
+    <div id="img"></div>
+    <!-- <img id = "chicken" src="https://www.icegif.com/wp-content/uploads/chicken-icegif-8.gif" alt="" width="200px"> -->
+    <div id="count"></div>
+    <script>
+        let div = document.getElementById("time")
+        let btn = document.getElementById("btn");
+        function reverseTime() {
+            let date = new Date();
+            let hours = 24 - date.getHours();
+            let minutes = 60 - date.getMinutes();
+            let seconds = 60 - date.getSeconds();
+            div.innerHTML = hours + ":" + minutes + ":" + seconds
+        }
+        function currentTime() {
+            let date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            div.innerHTML = hours + ":" + minutes + ":" + seconds
+        }
+        function clear () {
+            clearInterval(interval)
+        }
+        var img = document.createElement("img");
+        function showChicken () {
+            img.src = 'https://www.icegif.com/wp-content/uploads/chicken-icegif-8.gif'
+            img.style.width = Math.floor(Math.random()*300) + "px";
+            img.style.margin = Math.floor(Math.random()*700) + "px";
+            document.getElementById('body').appendChild(img);
+        }
+        // showChicken()
+        let interval = setInterval(reverseTime, 1000);
+        count = 0
+        btn.addEventListener('click', clear)
+        div.addEventListener('click', currentTime);
+        let chicken = document.getElementById("chicken");
+        let game = setInterval(showChicken, 1000);
+        img.addEventListener('click', function() {
+            count = count + 10;
+            // if (img.style.width < 80 + "px") {
+            //     count = count + 20;
+                
+            // } else if (img.style.width > 80 + "px") {
+            //     count = count + 10
+            // }
+            document.getElementById("count").innerHTML= "Your point: " + count;
+            if (count==1000) {
+            clearInterval(game);
+            alert("You Win!")}
+        });
+        
+
+    </script>
+</body>
+
+</html>
