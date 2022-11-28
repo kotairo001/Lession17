@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #time {
+        font-size: x-large;
+    }
+</style>
+<body id = "body_part">
+    <div id="time"></div>
+    <div style="display: hidden;" id="audio"></div>
+    
+    <!-- <audio autoplay src="/Lession17/audio/MayBe-Yiruma_462ua (1).mp3"></audio> -->
+    <script>
+        let container = document.getElementById("time");
+        let audio_container = document.getElementById("audio");
+        let body = document.getElementById("body_part");
+        function showTime() {
+            let date = new Date() ;
+            let time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+            container.innerHTML = time;
+            container.style.color = "white"
+            container.style.textAlign = "center";
+
+        }
+        function audioStart () {
+            let audio = '<audio autoplay src="/Lession17/audio/MayBe-Yiruma_462ua (1).mp3"></audio>';
+            audio_container.innerHTML = audio;
+        }
+        function changeImg() {
+            body.style.backgroundImage = "url('https://wallpaperaccess.com/full/39632.jpg"
+            // body.style.backgroundRepeat = "no-repeat";
+        }
+    setInterval(showTime, 1000);
+    setInterval(changeImg, 2000);
+    setInterval(audioStart, 2000);
+
+
+    </script>
+</body>
+</html>
